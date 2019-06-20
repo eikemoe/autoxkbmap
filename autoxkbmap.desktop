@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Autoxkbmap
+Comment=Automatically configure the keyboard(s)
+Type=Application
+Exec=/usr/bin/autoxkbmap
+X-GNOME-Autostart-Phase=Initialization
