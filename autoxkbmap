@@ -1,5 +1,7 @@
 #!/bin/bash
 
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+
 ## more or less copied from [autorandr](https://github.com/wertarbyte/autorandr)
 detect_display()
 {
@@ -12,12 +14,34 @@ detect_display()
 		if [ x"${user}" != x"" ] && [ -x "/home/${user}/.config/autoxkbmap" ]; then
 			export DISPLAY=":$D"
 			echo "running autoxkbmap for ${user} on display ${DISPLAY}"
-			/bin/su -c "/home/${user}/.config/autoxkbmap" "${user}"
+			/bin/su -c "/usr/bin/autoxkbmap --change" "${user}"
 		fi
 	done
 }
 
-## lets wait for the system to settel
-sleep 3
-## and then run autoxkbmap for every user with an X11 session
-detect_display
+change_config()
+{
+	local USER_XKBMAP=${XDG_CONFIG_HOME}/autoxkbmap
+	if [ -x "${USER_XKBMAP}" ]; then
+		echo "loading autoxkbmap config (${USER_XKBMAP}) on display ${DISPLAY}"
+		"${USER_XKBMAP}"
+	fi
+}
+
+case "$1" in
+	(--batch)
+		## lets wait for the system to settel
+		sleep 3
+		## and then run autoxkbmap for every user with an X11 session
+		detect_display
+		;;
+	(--change)
+		change_config
+		;;
+	(*)
+		echo "usage: $0 [options]"
+		echo
+		echo "	--batch		run autoxkbmap for the users of all active X11 session"
+		echo "	--change	apply the user's xkbmap config"
+		;;
+esac

@@ -8,7 +8,7 @@ StartLimitInterval=5
 StartLimitBurst=1
 
 [Service]
-ExecStart=/usr/bin/autoxkbmap
+ExecStart=/usr/bin/autoxkbmap --batch
 Type=oneshot
 RemainAfterExit=false
 

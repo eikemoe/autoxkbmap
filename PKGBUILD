@@ -1,7 +1,7 @@
 # Maintainer: Eike Möhlmann <eike DOT moehlmann AT informatik DOT uni DASH oldenburg DOT de>
 
 pkgname=udev-autoxkbmap
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='Udev rules to run autoxkbmap after usb keyboard hotplug.'
 arch=(any)
@@ -27,7 +27,8 @@ package() {
   install -m644 "${srcdir}/autoxkbmap.desktop" "${pkgdir}/etc/xdg/autostart"
   install -m755 "${srcdir}/autoxkbmap" "${pkgdir}/usr/bin/"
 }
-md5sums=('4aae06c35e5cc581f7d3356578c355b3'
-         'db946c948b02b1dd683b9531013cfa0e'
-         'ce5bdd3f8e95653a872f39ff7aa87383'
-         'e38423541e594c9fd100141688bd2031')
+
+sha256sums=('60bbe2a2e830ef015116be833ca9f619895381a54dc6cea835e2c41e2ccb709e'
+            '2db5a9a576a0d98512e8784bc9935d4f1a767792473fce4165139be4795bc887'
+            'a1a0d875aa0f76eb22d434f495571cf429ad0e068b1baa402f9f88abccb427f4'
+            '13de323c7591cca8c4762a8944f45787390730305da10516fac5f64b5e8ee13c')
