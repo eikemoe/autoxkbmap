@@ -9,7 +9,7 @@ detect_display()
 	for X in /tmp/.X11-unix/X*; do
 		## get user owning the socket
 		D="${X##/tmp/.X11-unix/X}"
-		user=$(who | awk -vD="$D" '$5 ~ "\\(:"D"\\)$" {print $1}')
+		user=$(who | awk -vD="$D" '$5 ~ "\\(:"D"\\)$" {print $1}' | head -n1)
 		## run autoxbkmap for that user (if the file is executable)
 		if [ x"${user}" != x"" ] && [ -x "/home/${user}/.config/autoxkbmap" ]; then
 			export DISPLAY=":$D"
