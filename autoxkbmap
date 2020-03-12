@@ -10,8 +10,9 @@ detect_display()
 		## get user owning the socket
 		D="${X##/tmp/.X11-unix/X}"
 		user=$(who | awk -vD="$D" '$5 ~ "\\(:"D"\\)$" {print $1}')
+		home=$(getent passwd $user | cut -d: -f6)
 		## run autoxbkmap for that user (if the file is executable)
-		if [ x"${user}" != x"" ] && [ -x "/home/${user}/.config/autoxkbmap" ]; then
+		if [ x"${user}" != x"" ] && [ -x "${home}/.config/autoxkbmap" ]; then
 			export DISPLAY=":$D"
 			echo "running autoxkbmap for ${user} on display ${DISPLAY}"
 			/bin/su -c "/usr/bin/autoxkbmap --change" "${user}"
