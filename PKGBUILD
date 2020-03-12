@@ -2,7 +2,7 @@
 
 pkgname=udev-autoxkbmap
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Udev rules to run autoxkbmap after usb keyboard hotplug.'
 arch=(any)
 url='TODO'
@@ -29,6 +29,6 @@ package() {
 }
 
 sha256sums=('60bbe2a2e830ef015116be833ca9f619895381a54dc6cea835e2c41e2ccb709e'
-            '2db5a9a576a0d98512e8784bc9935d4f1a767792473fce4165139be4795bc887'
+            'fa7ce174dc7919cfd90d7f0648e4959ce1d28d96a93a588cd97cbed86fdbb9d1'
             'a1a0d875aa0f76eb22d434f495571cf429ad0e068b1baa402f9f88abccb427f4'
             '13de323c7591cca8c4762a8944f45787390730305da10516fac5f64b5e8ee13c')
